@@ -23,3 +23,7 @@
 1. `docker build -t jindaxiang/newopen .`
 2. `docker tag local-image:tagname jindaxiang/new-repo:tagname`
 3. `docker push jindaxiang/new-repo:tagname`
+
+## 查看
+
+1. PyPI 版本：https://pypi.org/search/?q=rshare
