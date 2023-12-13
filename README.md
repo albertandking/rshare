@@ -48,4 +48,4 @@ print(fetch_name_str)
 
 ## 查看
 
-1. [PyPI 版本产看版本](https://pypi.org/search/?q=rshare)
+1. [PyPI 版本 RShare 版本](https://pypi.org/search/?q=rshare)
