@@ -2,6 +2,24 @@
 
 这是一个 Python 和 Rust 混合编程的项目
 
+## 安装
+
+通过 `pip install rshare --upgrade` 来安装 `rshare` 体验 Rust 的极速体验！
+
+## 使用
+
+```python
+import rshare as rk
+
+# Rust 接口
+fetch_title_str = rk.fetch_title(url="https://www.baidu.com")
+print(fetch_title_str)
+
+# Python 接口
+fetch_name_str = rk.fetch_name(url="https://www.baidu.com")
+print(fetch_name_str)
+```
+
 ## 版本说明
 
 1. Python 3.11
