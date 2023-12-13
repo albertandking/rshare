@@ -23,4 +23,3 @@ dependencies = [
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
-python-packages = ["cal"]
