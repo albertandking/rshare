@@ -12,4 +12,5 @@ crate-type = ["cdylib"]
 reqwest = {version = "0.11.22", features = ["blocking"]}
 scraper = {version = "0.18.1"}
 pyo3 = {version = "0.20.0", features = ["abi3-py38"]}
-openssl-sys = {version = "0.9.97", features = ["vendored"]}
+openssl-sys = "0.9.97"
+openssl = { version = "0.10.61", features = ["vendored"] }
