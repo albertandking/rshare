@@ -24,6 +24,14 @@ fetch_name_str = rk.fetch_name(url="https://www.baidu.com")
 print(fetch_name_str)
 ```
 
+## 构建
+
+```shell
+maturin build
+
+maturin develop --release
+```
+
 ## 版本说明
 
 1. Python 3.11
@@ -49,3 +57,8 @@ print(fetch_name_str)
 ## 查看
 
 1. [PyPI 版本 RShare 版本](https://pypi.org/search/?q=rshare)
+
+## 贡献代码
+
+1. [maturin 项目](https://github.com/PyO3/maturin)
+2. [maturin 文档](https://www.maturin.rs/)
