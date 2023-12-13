@@ -1,4 +1,4 @@
-## 项目介绍
+# 项目介绍
 
 这是一个 Python 和 Rust 混合编程的项目，主要目的是比较 Rust 和 Python 的性能差异。
 
@@ -37,7 +37,7 @@ print(fetch_name_str)
 
 1. 推送到 main
 2. 修改 `Cargo.toml` 中的版本号
-3. 打标签：`git tag v0.1.7`; 
+3. 打标签：`git tag v0.1.7`
 4. 通过推送标签进行升级：`git push origin v0.1.7`
 
 ## 镜像推送
@@ -48,4 +48,4 @@ print(fetch_name_str)
 
 ## 查看
 
-1. PyPI 版本：https://pypi.org/search/?q=rshare
+1. [PyPI 版本产看版本](https://pypi.org/search/?q=rshare)
