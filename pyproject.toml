@@ -1,0 +1,17 @@
+[build-system]
+requires = ["maturin>=1.4,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "rshare"
+requires-python = ">=3.8"
+dynamic = ["version"]
+description = "Make it better!"
+keywords = ["data", "finance"]
+authors = [
+  {email = "albertandking@gmail.com"},
+  {name = "Albert King"}
+]
+
+[tool.maturin]
+features = ["pyo3/extension-module"]

@@ -1,0 +1,3 @@
+# rshare.pyi
+
+def fetch_title(url: str) -> str: ...
