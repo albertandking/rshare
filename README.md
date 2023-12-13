@@ -4,6 +4,10 @@
 
 ## 安装
 
+目前已经支持 64 位操作系统，包括 Windows，Linux，macOS 和 ARM64 架构的 Linux 系统。
+
+```bash
+
 通过 `pip install rshare --upgrade` 来安装 `rshare` 体验 Rust 的极速体验！
 
 ## 使用
