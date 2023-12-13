@@ -1,6 +1,6 @@
 [package]
 name = "rshare"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -9,9 +9,7 @@ name = "rshare"
 crate-type = ["cdylib"]
 
 [dependencies]
-reqwest = {version = "0.11.22", features = ["blocking"]}
-scraper = {version = "0.18.1"}
-pyo3 = {version = "0.20.0", features = ["abi3-py38"]}
+reqwest = { version = "0.11.22", features = ["blocking"] }
+scraper = { version = "0.18.1" }
+pyo3 = { version = "0.20.0", features = ["abi3-py38"] }
 openssl = { version = "0.10", features = ["vendored"] }
-#[target.'cfg(target_env = "aarch64")'.dependencies]
-#openssl = { version = "0.10", features = ["vendored"] }
