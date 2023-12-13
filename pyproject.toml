@@ -12,6 +12,15 @@ authors = [
   {email = "albertandking@gmail.com"},
   {name = "Albert King"}
 ]
+classifiers = [
+  "Programming Language :: Python"
+]
+
+dependencies = [
+  "requests",
+  "beautifulsoup4",
+]
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
+python-packages = ["cal"]
