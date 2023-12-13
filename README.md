@@ -17,3 +17,9 @@
 2. 修改 `Cargo.toml` 中的版本号
 3. 打标签：`git tag v0.1.7`; 
 4. 通过推送标签进行升级：`git push origin v0.1.7`
+
+## 镜像推送
+
+1. `docker build -t jindaxiang/newopen .`
+2. `docker tag local-image:tagname jindaxiang/new-repo:tagname`
+3. `docker push jindaxiang/new-repo:tagname`
