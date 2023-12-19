@@ -1,0 +1,53 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        // 调试 main.rs 文件
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug main.rs",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=rshare", // 替换为您的二进制文件名
+                    "--package=rshare" // 替换为您的包名
+                ],
+                "filter": {
+                    "name": "rshare", // 替换为您的二进制文件名
+                    "kind": "bin"
+                },
+                "env": {
+                    "PYO3_PYTHON": "C:\\Users\\albert\\.conda\\envs\\pyo\\python.exe"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        // 单元测试
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'rshare'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=rshare"
+                ],
+                "filter": {
+                    "name": "rshare",
+                    "kind": "lib"
+                },
+                "env": {
+                    "PYO3_PYTHON": "C:\\Users\\albert\\.conda\\envs\\pyo\\python.exe"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}",
+        }
+    ]
+}

@@ -62,3 +62,7 @@ maturin develop --release
 
 1. [maturin 项目](https://github.com/PyO3/maturin)
 2. [maturin 文档](https://www.maturin.rs/)
+
+## 关注 .vscode
+
+用于 debug 代码，新增 .vscode 文件夹
