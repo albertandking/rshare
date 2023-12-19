@@ -9,7 +9,7 @@ def calculate_moving_average_py(prices: List[float], window_size: int) -> List[f
 
     moving_averages = []
     for i in range(len(prices) - window_size + 1):
-        window = prices[i:i + window_size]
+        window = prices[i : i + window_size]
         window_average = sum(window) / window_size
         moving_averages.append(window_average)
 
@@ -24,7 +24,7 @@ def fetch_name(url: str) -> str:
     return title_str
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     title = fetch_name("https://www.baidu.com")
     print(title)
 
