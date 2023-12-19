@@ -2,7 +2,7 @@ import time
 
 import rshare as rk
 
-data_num = 100000000
+data_num = 100000
 
 start_rs = time.time()
 result_rs = rk.calculate_moving_average_rs([10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0] * data_num, 5)
