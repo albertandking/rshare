@@ -3,13 +3,13 @@ from bs4 import BeautifulSoup
 from typing import List
 
 
-def calculate_moving_average_py(prices: List[float], window_size: int) -> List[float]:
-    if window_size > len(prices):
+def calculate_moving_average_py(data: List[float], window_size: int) -> List[float]:
+    if window_size > len(data):
         raise ValueError("Window size larger than the list size")
 
     moving_averages = []
-    for i in range(len(prices) - window_size + 1):
-        window = prices[i : i + window_size]
+    for i in range(len(data) - window_size + 1):
+        window = data[i : i + window_size]
         window_average = sum(window) / window_size
         moving_averages.append(window_average)
 
