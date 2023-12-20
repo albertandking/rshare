@@ -25,8 +25,8 @@ pub fn fetch_title(url: &str) -> PyResult<String> {
 }
 
 #[pyfunction]
-pub fn calculate_moving_average_rs(prices: Vec<f64>, window_size: usize) -> PyResult<Vec<f64>> {
-    Ok(calculate_moving_average(&prices, window_size))
+pub fn calculate_moving_average_rs(data: Vec<f64>, window_size: usize) -> PyResult<Vec<f64>> {
+    Ok(calculate_moving_average(&data, window_size))
 }
 
 pub fn calculate_moving_average(prices: &[f64], window_size: usize) -> Vec<f64> {
