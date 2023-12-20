@@ -45,16 +45,17 @@ maturin develop --release
 
 ## 更新
 
-1. 推送到 main
+1. 推送到 main 分支
 2. 修改 `Cargo.toml` 中的版本号
 3. 打标签：`git tag v0.1.7`
 4. 通过推送标签进行升级：`git push origin v0.1.7`
 
 ## 镜像推送
 
-1. `docker build -t jindaxiang/newopen .`
-2. `docker tag local-image:tagname jindaxiang/new-repo:tagname`
-3. `docker push jindaxiang/new-repo:tagname`
+1. 基于原始镜像：`ghcr.io/rust-cross/manylinux2014-cross:aarch64`
+2. `docker build -t jindaxiang/newopen .`
+3. `docker tag local-image:tagname jindaxiang/new-repo:tagname`
+4. `docker push jindaxiang/new-repo:tagname`
 
 ## 查看
 

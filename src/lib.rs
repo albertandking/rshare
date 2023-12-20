@@ -5,8 +5,8 @@ use reqwest;
 use scraper::{Html, Selector};
 
 #[pyfunction]
-pub fn fetch_title(url: String) -> PyResult<String> {
-    let res = reqwest::blocking::get(&url)
+pub fn fetch_title(url: &str) -> PyResult<String> {
+    let res = reqwest::blocking::get(url)
         .map_err(|e| PyErr::new::<pyo3::exceptions::PyIOError, _>(format!("{}", e)))?;
 
     let body = res
@@ -50,7 +50,7 @@ mod tests {
 
     #[test]
     fn test_fetch_title() {
-        let url = "https://example.com".to_string();
+        let url = "https://example.com";
         let result = fetch_title(url);
         // 首先确保结果是 Ok
         assert!(result.is_ok());
