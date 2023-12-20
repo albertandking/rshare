@@ -34,6 +34,8 @@ maturin develop --release
 
 ## 版本说明
 
+目前主要是说明开发的软件版本：
+
 1. Python 3.11
 2. Rust 1.74.1
 
