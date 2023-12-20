@@ -29,9 +29,9 @@ pub fn calculate_moving_average_rs(data: Vec<f64>, window_size: usize) -> PyResu
     Ok(calculate_moving_average(&data, window_size))
 }
 
-pub fn calculate_moving_average(prices: &[f64], window_size: usize) -> Vec<f64> {
+pub fn calculate_moving_average(data: &[f64], window_size: usize) -> Vec<f64> {
     let window_length = f64::from(window_size as u32);
-    prices
+    data
         .par_windows(window_size)
         .map(|window| window.iter().sum::<f64>() / window_length)
         .collect()
@@ -61,9 +61,9 @@ mod tests {
     #[test]
     fn test_calculate_moving_average() {
         // 编写针对 calculate_moving_average 函数的测试
-        let prices = vec![10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0];
+        let data = vec![10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0];
         let window_size = 5;
-        let result = calculate_moving_average(&prices, window_size);
+        let result = calculate_moving_average(&data, window_size);
 
         // 使用 assert_eq! 宏检查结果是否与预期相符
         assert_eq!(result, vec![10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0]);
