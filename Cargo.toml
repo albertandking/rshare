@@ -1,12 +1,18 @@
 [package]
 name = "rshare"
-version = "0.1.9"
+version = "0.1.10"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
 name = "rshare"
+path = "src/lib.rs"
 crate-type = ["lib", "cdylib"]
+
+# 二进制配置
+[[bin]]
+name = "rshare_bin"
+path = "src/main.rs"
 
 [dependencies]
 reqwest = { version = "0.11.22", features = ["blocking"] }
