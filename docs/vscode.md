@@ -4,7 +4,7 @@
 Rust 和 Python 的编程和调试，因为其中 Rust 还依赖 Python 的虚拟环境。
 
 1. Miniconda 管理 Python
-2. 直接按照 Rust
+2. 直接安装 Rust
 
 ## Windows 平台配置
 

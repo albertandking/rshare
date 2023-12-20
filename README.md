@@ -8,7 +8,7 @@
 
 ## 安装
 
-通过 `pip install rshare --upgrade` 来安装 `rshare` 体验 Rust 的极致性能！
+通过 `pip install rshare --upgrade -i https://pypi.org/simple` 来安装 `rshare` 体验 Rust 的极致性能！
 
 ## 使用
 
