@@ -1,7 +1,7 @@
 # 项目介绍
 
 这是一个 Python 和 Rust 混合编程的项目，主要目的是比较 Rust 和 Python 的性能差异。目前这个项目是 [rshare](https://github.com/albertandking/rshare)，我们
-在项目中通过 PYO3 和 Maturin 来将 Rust 代码包装到 Python 中，以使得用户可以通过 Python 代码来调用 Rust 写的函数。当然其中是由性能的损失的。
+在项目中通过 PYO3 和 Maturin 来将 Rust 代码包装到 Python 中，以使得用户可以通过 Python 代码来调用 Rust 写的函数。当然其中是有性能损失的。
 
 ## 说明
 
@@ -23,6 +23,10 @@ print(fetch_title_str)
 # Python 接口
 fetch_name_str = rk.fetch_name(url="https://www.baidu.com")
 print(fetch_name_str)
+
+# Rust 接口测试计算 5 日均线
+result_rs = rk.calculate_moving_average_rs(data=[10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0] * 10000000, window_size=5)
+print(result_rs)
 ```
 
 ## 构建
