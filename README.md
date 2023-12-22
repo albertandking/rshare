@@ -15,8 +15,14 @@
 
 ```python
 import time
-import talib
+
+import numpy as np
 import rshare as rk
+import talib
+
+data_num = 1000000
+data_np = np.random.rand(data_num)
+timeperiod = 50
 
 # Rust 和 C 对比
 start_py = time.time()
