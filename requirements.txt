@@ -1,3 +1,11 @@
+# requests: A Python HTTP library for sending HTTP requests.
 requests
+
+# beautifulsoup4: A library for parsing HTML and XML documents, commonly used for web scraping.
 beautifulsoup4
+
+# mkdocs: A static site generator geared towards building project documentation using Markdown files.
 mkdocs
+
+# ruff: This is a linter or code formatter for Python
+ruff

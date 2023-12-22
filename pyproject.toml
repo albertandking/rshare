@@ -29,3 +29,17 @@ changelog = "https://github.com/jindaxiang/rshare/blob/master/CHANGELOG.md"
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
+
+[tool.ruff]
+# Set the maximum line length to 79.
+line-length = 79
+
+[tool.ruff.lint]
+# Add the `line-too-long` rule to the enforced rule set.
+extend-select = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+exclude = ["*.pyi", "*.ipynb"]
