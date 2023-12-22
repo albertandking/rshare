@@ -6,12 +6,13 @@ build-backend = "maturin"
 name = "rshare"
 requires-python = ">=3.8"
 dynamic = ["version"]
-description = "Make it better!"
+description = "It is a toy project for Python and Rust!"
 keywords = ["data", "finance", "stock", "futures"]
 authors = [
   {email = "albertandking@gmail.com"},
   {name = "Albert King"}
 ]
+readme = "README.md"
 classifiers = [
   "Programming Language :: Python"
 ]
@@ -23,6 +24,7 @@ license = "MIT"
 
 [project.urls]
 homepage = "https://github.com/jindaxiang/rshare"
+documentation = "https://rshare.readthedocs.io/"
 repository = "https://github.com/jindaxiang/rshare"
 changelog = "https://github.com/jindaxiang/rshare/blob/master/CHANGELOG.md"
 
