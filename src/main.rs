@@ -1,4 +1,4 @@
-use rshare::fetch_title; // 假设您的库名为 rshare
+use rshare::fetch_title;
 
 fn main() {
     let url = "https://example.com";
