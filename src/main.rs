@@ -26,6 +26,11 @@ fn main() {
 
     // 生成一个随机浮点数的向量
     let data: Vec<f64> = (0..data_size).map(|_| rand::thread_rng().gen()).collect();
+
+    // 利用固定数值生成一个向量
+    // let initial_vec = vec![1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0];
+    // let data = initial_vec.repeat(data_size);
+
     // 计算创建向量所花费的时间
     let vec_duration = vec_start.elapsed();
     // 打印出创建向量所花费的时间

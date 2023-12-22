@@ -22,23 +22,27 @@ def cmma(bar_data, lookback):
 
 
 # 生成随机数据
-data_num = 1000000
+data_num = 10000
 data_np = np.random.rand(data_num)
-timeperiod = 50
+
+# data_np = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0] * 1000000)
+timeperiod = 5
 
 # Rust 实现的时间测试
 start_rs = time.perf_counter()
-result_rs = rk.calculate_moving_average_rs(
-    data=data_np, window_size=timeperiod
-)
+result_rs = rk.calculate_moving_average_rs(data=data_np, window_size=timeperiod)
 end_rs = time.perf_counter()
-print(f"Rust 实现: {end_rs - start_rs} seconds")
+print(f"Rust  实现: {end_rs - start_rs} seconds")
+# 基 Rust 实现: 0.00680940 seconds
+# 纯 Rust 实现: 0.00518641 seconds
 
 # Talib 实现的时间测试
 start_py = time.perf_counter()
 result_talib = talib.SMA(data_np, timeperiod=timeperiod)
 end_py = time.perf_counter()
 print(f"Talib 实现: {end_py - start_py} seconds")
+
+
 
 # Numba 实现的时间测试
 start_py = time.perf_counter()
@@ -52,19 +56,29 @@ result_py = rk.calculate_moving_average_py(data=data_np, window_size=timeperiod)
 end_py = time.perf_counter()
 print(f"纯 Python 实现: {end_py - start_py} seconds")
 
-# Rust 和 C 实现的性能对比
-start_py = time.perf_counter()
-result_talib = talib.SMA(data_np, timeperiod)
-end_py = time.perf_counter()
-print(f"Talib took: {end_py - start_py} seconds")
+temp_list = []
+for i in range(10000):
+    data_num = 100000 +i
+    data_np = np.random.rand(data_num)
+    # Rust 和 C 对比
+    start_py = time.perf_counter_ns()
+    result_talib = talib.SMA(data_np, timeperiod)
+    end_py = time.perf_counter_ns()
+    c_time = end_py - start_py
+    # print(f"基于 TA-Lib 的耗时: {c_time} seconds")
 
-start_py = time.perf_counter()
-result_np_rs = rk.calculate_moving_average_rs(data_np, timeperiod)
-end_py = time.perf_counter()
-print(f"RSNP took: {end_py - start_py} seconds")
+    start_py = time.perf_counter_ns()
+    result_np_rs = rk.calculate_moving_average_rs(data=data_np, window_size=timeperiod)
+    end_py = time.perf_counter_ns()
+    r_time = end_py - start_py
+    # print(f"基于  Rust  的耗时: {r_time} seconds")
+    temp_list.append(c_time / r_time)
+    print(f"Rust 优化比例: {c_time / r_time}")
+
+print(f"Rust 优化比例: {np.mean(temp_list)}")
 
 # 校验 Rust 和 Talib 实现的结果是否一致
-if result_talib[99999].round(6) == result_np_rs[99999].round(6):
+if result_talib[9999].round(6) == result_np_rs[9999].round(6):
     print("equal")
 else:
     print("not equal")
@@ -93,8 +107,8 @@ def test_fetch_function(func, url, times):
 
 address = "https://www.eastmoney.com/"
 
-# 对 fetch_name 函数进行测试
-test_fetch_function(rk.fetch_name, address, 10)
+# # 对 fetch_name 函数进行测试
+# test_fetch_function(rk.fetch_name, address, 10)
 
-# 对 fetch_title 函数进行测试
-test_fetch_function(rk.fetch_title, address, 10)
+# # 对 fetch_title 函数进行测试
+# test_fetch_function(rk.fetch_title, address, 10)

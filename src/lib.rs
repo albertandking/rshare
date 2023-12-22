@@ -41,7 +41,7 @@ pub fn calculate_moving_average_rs<'py>(
     // 读取 NumPy 数组数据
     let data_slice = data.as_slice()?;
     // 根据窗口大小选择计算方法
-    if window_size > 80 {
+    if window_size > 80 || data_slice.len() < 500000 {
         let result = calculate_moving_average_big(data_slice, window_size);
         Ok(result.into_pyarray(py))
     } else {
