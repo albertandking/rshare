@@ -69,7 +69,9 @@ maturin develop --release
 ## 贡献代码
 
 1. [maturin 项目](https://github.com/PyO3/maturin)
-2. [maturin 文档](https://www.maturin.rs/)
+2. [maturin 文档](https://www.maturin.rs)
+3. [PyO3 项目](https://github.com/PyO3/pyo3)
+4. [PyO3 文档](https://pyo3.rs)
 
 ## 关注 .vscode
 
