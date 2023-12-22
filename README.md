@@ -20,20 +20,20 @@ import numpy as np
 import rshare as rk
 import talib
 
-data_num = 1000000
+data_num = 100000000
 data_np = np.random.rand(data_num)
-timeperiod = 50
+timeperiod = 10
 
 # Rust 和 C 对比
 start_py = time.time()
 result_talib = talib.SMA(data_np, timeperiod)
 end_py = time.time()
-print(f"Talib took: {end_py - start_py} seconds")
+print(f"基于 C 语言的 TA-Lib 耗时: {end_py - start_py} seconds")
 
 start_py = time.time()
-result_np_rs = rk.calculate_moving_average_rs(data_np, timeperiod)
+result_np_rs = rk.calculate_moving_average_rs(data=data_np, window_size=timeperiod)
 end_py = time.time()
-print(f"RSNP took: {end_py - start_py} seconds")
+print(f"基于 Rust 的耗时: {end_py - start_py} seconds")
 ```
 
 ## 构建
