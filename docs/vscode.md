@@ -14,16 +14,20 @@ Rust 和 Python 的编程和调试，因为其中 Rust 还依赖 Python 的虚�
 
 ```json
 {
-    "rust-analyzer.server.extraEnv": {
-        "PYO3_PYTHON": "C:\\Users\\albert\\.conda\\envs\\pyo\\python.exe"
-    },
-    "terminal.integrated.profiles.windows": {
-        "Conda Powershell": {
-            "path": "powershell.exe",
-            "args": ["-NoExit", "-Command", "& cmd.exe /c 'C:\\ProgramData\\Miniconda3\\Scripts\\activate.bat C:\\Users\\albert\\.conda\\envs\\pyo && powershell'"]
-        }
-    },
-    "terminal.integrated.defaultProfile.windows": "Conda Powershell"
+  "rust-analyzer.server.extraEnv": {
+    "PYO3_PYTHON": "C:\\Users\\albert\\.conda\\envs\\pyo\\python.exe"
+  },
+  "terminal.integrated.profiles.windows": {
+    "Conda Powershell": {
+      "path": "powershell.exe",
+      "args": [
+        "-NoExit",
+        "-Command",
+        "& cmd.exe /c 'C:\\ProgramData\\Miniconda3\\Scripts\\activate.bat C:\\Users\\albert\\.conda\\envs\\pyo && powershell'"
+      ]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Conda Powershell"
 }
 ```
 
@@ -46,13 +50,9 @@ Rust 和 Python 的编程和调试，因为其中 Rust 还依赖 Python 的虚�
       "request": "launch",
       "name": "Debug main.rs",
       "cargo": {
-        "args": [
-          "build",
-          "--bin=rshare",
-          "--package=rshare"
-        ],
+        "args": ["build", "--bin=rshare_bin", "--package=rshare"],
         "filter": {
-          "name": "rshare",
+          "name": "rshare_bin",
           "kind": "bin"
         },
         "env": {
@@ -67,12 +67,7 @@ Rust 和 Python 的编程和调试，因为其中 Rust 还依赖 Python 的虚�
       "request": "launch",
       "name": "Debug unit tests in library 'rshare'",
       "cargo": {
-        "args": [
-          "test",
-          "--no-run",
-          "--lib",
-          "--package=rshare"
-        ],
+        "args": ["test", "--no-run", "--lib", "--package=rshare"],
         "filter": {
           "name": "rshare",
           "kind": "lib"
