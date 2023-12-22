@@ -7,7 +7,7 @@ name = "rshare"
 requires-python = ">=3.8"
 dynamic = ["version"]
 description = "Make it better!"
-keywords = ["data", "finance"]
+keywords = ["data", "finance", "stock", "futures"]
 authors = [
   {email = "albertandking@gmail.com"},
   {name = "Albert King"}
@@ -15,11 +15,17 @@ authors = [
 classifiers = [
   "Programming Language :: Python"
 ]
-
 dependencies = [
   "requests",
   "beautifulsoup4",
 ]
+license = "MIT"
+
+[project.urls]
+homepage = "https://github.com/jindaxiang/rshare"
+repository = "https://github.com/jindaxiang/rshare"
+changelog = "https://github.com/jindaxiang/rshare/blob/master/CHANGELOG.md"
+
 
 [tool.maturin]
 features = ["pyo3/extension-module"]

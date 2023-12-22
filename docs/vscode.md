@@ -37,6 +37,7 @@ Rust 和 Python 的编程和调试，因为其中 Rust 还依赖 Python 的虚�
 {
   "version": "0.2.0",
   "configurations": [
+    // 调试 Python 代码
     {
       "name": "Python: Current File",
       "type": "python",
@@ -45,6 +46,7 @@ Rust 和 Python 的编程和调试，因为其中 Rust 还依赖 Python 的虚�
       "console": "integratedTerminal",
       "justMyCode": true
     },
+    // 调试可执行文件 main.rs 代码
     {
       "type": "lldb",
       "request": "launch",
@@ -62,6 +64,7 @@ Rust 和 Python 的编程和调试，因为其中 Rust 还依赖 Python 的虚�
       "args": [],
       "cwd": "${workspaceFolder}"
     },
+    // 由于 lib.rs 不是可执行文件，此处主要通过 test 来调试 lib.rs 代码
     {
       "type": "lldb",
       "request": "launch",
