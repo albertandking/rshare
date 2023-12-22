@@ -1,6 +1,6 @@
 [package]
 name = "rshare"
-version = "0.1.15"
+version = "0.1.16"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -18,9 +18,9 @@ path = "src/main.rs"
 reqwest = { version = "0.11.23", features = ["blocking"] }
 scraper = { version = "0.18.1" }
 pyo3 = { version = "0.20.0", features = ["abi3-py38"] }
-rayon = {version = "1.8.0"}
-rusty-talib = { version = "0.1.0", features = ["overlap_studies"] }
-polars-core = { version = "0.33.2"}
+rayon = { version = "1.8.0" }
+numpy = { version = "0.20.0" }
+rand = { version = "0.8.5" }
 
 [target.'cfg(target_arch = "aarch64")'.dependencies]
 # 对于 Linux aarch64 架构需要重新编译 openssl
