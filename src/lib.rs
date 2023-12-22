@@ -1,8 +1,9 @@
-use pyo3::prelude::*;  // 引入 PyO3 库，用于在 Rust 中编写 Python 函数
+use polars_core::prelude::*;
+use pyo3::prelude::*; // 引入 PyO3 库，用于在 Rust 中编写 Python 函数
 use pyo3::wrap_pyfunction;
-use rayon::prelude::*;  // 引入 Rayon 库，用于数据的并行处理
-use reqwest;  // 引入 reqwest 库，用于进行 HTTP 请求
-use scraper::{Html, Selector};  // 引入 scraper 库，用于解析 HTML 文档
+use rayon::prelude::*; // 引入 Rayon 库，用于数据的并行处理
+use reqwest; // 引入 reqwest 库，用于进行 HTTP 请求
+use scraper::{Html, Selector}; // 引入 scraper 库，用于解析 HTML 文档 // 引入 Polars 库，用于计算移动平均值
 
 // 定义一个 Python 函数，用于获取网页的标题
 #[pyfunction]
@@ -41,10 +42,18 @@ pub fn calculate_moving_average_rs(data: Vec<f64>, window_size: usize) -> PyResu
 pub fn calculate_moving_average(data: &[f64], window_size: usize) -> Vec<f64> {
     let window_length = f64::from(window_size as u32);
     // 使用 Rayon 的并行窗口函数处理数据
-    data
-        .par_windows(window_size)
+    data.par_windows(window_size)
         .map(|window| window.iter().sum::<f64>() / window_length)
         .collect()
+}
+
+#[pyfunction]
+pub fn calculate_moving_average_talib_rs(data: Vec<f64>, window_size: u32) -> PyResult<Vec<f64>> {
+    let close = Series::new("data", &data);
+    let ma = rusty_talib::moving_average(&close, Some(window_size)).unwrap();
+    let vec: Vec<Option<f64>> = ma.f64().unwrap().into_iter().collect();
+    let d = vec.into_iter().map(|x| x.unwrap()).collect();
+    Ok(d)
 }
 
 // 将函数包装为 Python 模块
@@ -52,6 +61,7 @@ pub fn calculate_moving_average(data: &[f64], window_size: usize) -> Vec<f64> {
 fn rshare(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(fetch_title, m)?)?;
     m.add_function(wrap_pyfunction!(calculate_moving_average_rs, m)?)?;
+    m.add_function(wrap_pyfunction!(calculate_moving_average_talib_rs, m)?)?;
     Ok(())
 }
 
@@ -81,5 +91,19 @@ mod tests {
 
         // 使用 assert_eq! 宏检查结果是否与预期相符
         assert_eq!(result, vec![10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0]);
+    }
+
+    #[test]
+    fn test_calculate_moving_average_talib_rs() {
+        // 编写针对 calculate_moving_average 函数的测试
+        let data = vec![10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0];
+        let window_size = 5;
+        let result = calculate_moving_average_talib_rs(data, window_size);
+
+        // 使用 assert_eq! 宏检查结果是否与预期相符
+        assert_eq!(
+            result.unwrap(),
+            vec![10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0]
+        );
     }
 }

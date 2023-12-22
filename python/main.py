@@ -20,6 +20,14 @@ end_py = time.time()
 print(f"Python implementation took: {end_py - start_py} seconds")
 # Python implementation took: 187.05668830871582 seconds
 
+start_py = time.time()
+result_py = rk.calculate_moving_average_talib_rs(
+    data=[10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0] * data_num, 
+    window_size=5)
+end_py = time.time()
+print(f"Rust Talib took: {end_py - start_py} seconds")
+
+
 
 # 定义测试函数
 def test_fetch_function(func, url, times):
