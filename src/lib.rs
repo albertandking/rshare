@@ -89,11 +89,48 @@ pub fn calculate_moving_average_big(data: &[f64], window_size: usize) -> Vec<f64
     result
 }
 
+#[pyfunction]
+pub fn calculate_moving_average_in_rs<'py>(
+    py: Python<'py>,
+    data: PyReadonlyArray1<f64>,
+    window_size: usize,
+) -> PyResult<&'py PyArray1<f64>> {
+    let data_slice = data.as_slice()?;
+    if window_size == 0 {
+        return Err(PyErr::new::<pyo3::exceptions::PyValueError, _>(
+            "window_size must be greater than 0",
+        ));
+    }
+    if data_slice.len() < window_size {
+        return Err(PyErr::new::<pyo3::exceptions::PyValueError, _>(
+            "data length must be at least as large as window_size",
+        ));
+    }
+
+    let result = unsafe { PyArray1::new(py, [data_slice.len()], false)};
+    let result_slice = unsafe {result.as_slice_mut()?};
+    let window_length = window_size as f64;
+
+    let mut sum = 0.0;
+    for i in 0..window_size {
+        sum += data_slice[i];
+        result_slice[i] = f64::NAN; // Fill the start with NaN.
+    }
+
+    for i in window_size..data_slice.len() {
+        sum += data_slice[i] - data_slice[i - window_size];
+        result_slice[i] = sum / window_length;
+    }
+
+    Ok(result)
+}
+
 // 将 Python 函数注册到模块
 #[pymodule]
 fn rshare(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(fetch_title, m)?)?;
     m.add_function(wrap_pyfunction!(calculate_moving_average_rs, m)?)?;
+    m.add_function(wrap_pyfunction!(calculate_moving_average_in_rs, m)?)?;
     Ok(())
 }
 

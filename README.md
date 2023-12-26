@@ -13,6 +13,18 @@
 
 ## 使用
 
+### 安装依赖库
+
+请先确认是否在本地安装以下依赖库
+
+```shell
+pip install numpy rshare talib
+```
+
+**注意其中 talib 的安装需要参考：[ta-lib-python](https://github.com/TA-Lib/ta-lib-python)**
+
+### 运行测试代码
+
 ```python
 import time
 
@@ -20,7 +32,7 @@ import numpy as np
 import rshare as rk
 import talib
 
-data_num = 100000000
+data_num = 100000000  # 调整此数值
 data_np = np.random.rand(data_num)
 timeperiod = 10
 
@@ -36,6 +48,8 @@ end_py = time.time()
 print(f"基于 Rust 的耗时: {end_py - start_py} seconds")
 ```
 
+可以通过调整 data_num 数值来设置不同的数据量，从而比较性能差异！
+
 ## 构建
 
 ```shell
@@ -48,7 +62,7 @@ maturin develop --release
 
 目前主要是说明开发的软件版本：
 
-1. Python 3.11
+1. Python 3.11.5
 2. Rust 1.74.1
 
 ## 注意事项
