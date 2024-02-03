@@ -53,17 +53,26 @@ print(f"基于 Rust 的耗时: {end_py - start_py} seconds")
 ## 构建
 
 ```shell
-maturin build
+maturin build  # 会创建一个可以分发的轮子包，但不会安装它。
+maturin build --release  # 创建的轮子包是为发布准备的，具有更高的性能，但编译时间更长。
 
-maturin develop --release
+maturin develop # 非优化插入 Python 环境
+maturin develop --release  # 优化插入 Python 环境
+```
+
+## Python 测试
+
+```shell
+import rshare as rk
+rk.fetch_title("https://www.baidu.com") 
 ```
 
 ## 版本说明
 
 目前主要是说明开发的软件版本：
 
-1. Python 3.11.5
-2. Rust 1.74.1
+1. Python 3.12.1
+2. Rust 1.75
 
 ## 注意事项
 
@@ -97,3 +106,22 @@ maturin develop --release
 ## 关注 .vscode
 
 用于 debug 代码，新增 .vscode 文件夹
+
+## Python 环境设置
+
+利用 conda 创建虚拟环境，此处注意 Python 的版本
+
+```shell
+conda create -n rshare python
+```
+
+进入环境
+
+```shell
+conda activate rshare
+```
+
+```shell
+pip install maturin
+python -m pip install TA-Lib  # 仅用于测试 talib
+```
