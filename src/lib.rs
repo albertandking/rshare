@@ -5,6 +5,58 @@ use pyo3::wrap_pyfunction;
 use rayon::prelude::*; // 用于并行数据处理
 use reqwest; // 用于执行 HTTP 请求
 use scraper::{Html, Selector}; // 用于解析 HTML 文档
+use std::collections::HashMap; // 用于存储键值对
+use pyo3::types::IntoPyDict;
+
+#[pyfunction]
+pub fn akversion() -> PyResult<String> {
+    Python::with_gil(|py| {
+        let builtins = PyModule::import(py, "akshare")?;
+        let total: String = builtins
+            .getattr("__version__")?
+            .extract()?;
+        Ok(total)
+    })
+}
+
+#[pyfunction]
+pub fn mycode() -> PyResult<String> {
+    let key1 = "key1";
+    let val1 = 1;
+    let key2 = "key2";
+    let val2 = 2;
+
+    Python::with_gil(|py| {
+        let fun: Py<PyAny> = PyModule::from_code(
+            py,
+            "def example(*args, **kwargs):
+                if args != ():
+                    print('called with args', args)
+                if kwargs != {}:
+                    print('called with kwargs', kwargs)
+                if args == () and kwargs == {}:
+                    print('called with no arguments')",
+            "",
+            "",
+        )?
+        .getattr("example")?
+        .into();
+
+        // call object with PyDict
+        let kwargs = [(key1, val1)].into_py_dict(py);
+        fun.call(py, (), Some(kwargs))?;
+
+        // pass arguments as Vec
+        let kwargs = vec![(key1, val1), (key2, val2)];
+        fun.call(py, (), Some(kwargs.into_py_dict(py)))?;
+
+        // pass arguments as HashMap
+        let mut kwargs = HashMap::<&str, i32>::new();
+        kwargs.insert(key1, 1);
+        fun.call(py, (), Some(kwargs.into_py_dict(py)))?;
+        Ok("ssssss".to_string())
+    })
+}
 
 // Python 函数，用于获取网页标题
 #[pyfunction]
@@ -107,8 +159,8 @@ pub fn calculate_moving_average_in_rs<'py>(
         ));
     }
 
-    let result = unsafe { PyArray1::new(py, [data_slice.len()], false)};
-    let result_slice = unsafe {result.as_slice_mut()?};
+    let result = unsafe { PyArray1::new(py, [data_slice.len()], false) };
+    let result_slice = unsafe { result.as_slice_mut()? };
     let window_length = window_size as f64;
 
     let mut sum = 0.0;
@@ -128,6 +180,8 @@ pub fn calculate_moving_average_in_rs<'py>(
 // 将 Python 函数注册到模块
 #[pymodule]
 fn rshare(_py: Python, m: &PyModule) -> PyResult<()> {
+    m.add_function(wrap_pyfunction!(akversion, m)?)?;
+    m.add_function(wrap_pyfunction!(mycode, m)?)?;
     m.add_function(wrap_pyfunction!(fetch_title, m)?)?;
     m.add_function(wrap_pyfunction!(calculate_moving_average_rs, m)?)?;
     m.add_function(wrap_pyfunction!(calculate_moving_average_in_rs, m)?)?;
