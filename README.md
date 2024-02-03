@@ -82,8 +82,8 @@ rk.fetch_title("https://www.baidu.com")
 
 1. 推送到 main 分支
 2. 修改 `Cargo.toml` 中的版本号
-3. 打标签：`git tag v0.1.7`
-4. 通过推送标签进行升级：`git push origin tag v0.1.7`
+3. 打标签：`git tag v0.1.x`
+4. 通过推送标签进行升级：`git push origin tag v0.1.x`
 
 ## 镜像推送
 
