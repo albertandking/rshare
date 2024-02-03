@@ -2,6 +2,8 @@
 from typing import List
 import numpy as np
 
+def akversion() -> str: ...
+
 def fetch_title(url: str) -> str: ...
 
 
