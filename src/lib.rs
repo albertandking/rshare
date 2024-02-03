@@ -28,7 +28,7 @@ pub fn fetch_title(url: &str) -> PyResult<String> {
         .next()
         .map(|e| e.text().collect::<Vec<_>>().join(""))
         .unwrap_or_default();
-
+    let title_text = "Rust 采集：".to_string() + title_text.as_str();
     Ok(title_text)
 }
 
@@ -147,7 +147,7 @@ mod tests {
         let result = fetch_title(url);
         assert!(result.is_ok()); // 确保结果是 Ok
                                  // 对比实际标题和预期标题
-        assert_eq!(result.unwrap(), "Example Domain".to_string());
+        assert_eq!(result.unwrap(), "我来了".to_string());
     }
 
     // 测试计算移动平均的功能
