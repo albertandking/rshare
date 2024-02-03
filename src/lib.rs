@@ -9,13 +9,14 @@ use std::collections::HashMap; // 用于存储键值对
 use pyo3::types::IntoPyDict;
 
 #[pyfunction]
-pub fn akversion() -> PyResult<String> {
+pub fn akversion(name: &str, url: &str) -> PyResult<String> {
     Python::with_gil(|py| {
         let builtins = PyModule::import(py, "akshare")?;
         let total: String = builtins
             .getattr("__version__")?
             .extract()?;
-        Ok(total)
+        let title = fetch_title(url)?;
+        Ok(format!("{} 调用了我内部的 AKShare {} 版本 {}", name, total, title))
     })
 }
 
