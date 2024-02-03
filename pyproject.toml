@@ -7,7 +7,7 @@ name = "rshare"
 requires-python = ">=3.8"
 dynamic = ["version"]
 description = "It is a toy project for Python and Rust!"
-keywords = ["data", "finance", "stock", "futures"]
+keywords = ["python", "rust", "data", "finance"]
 authors = [
   {email = "albertandking@gmail.com"},
   {name = "Albert King"}
@@ -17,16 +17,17 @@ classifiers = [
   "Programming Language :: Python"
 ]
 dependencies = [
+  "akshare",
   "requests",
   "beautifulsoup4",
 ]
 license = "MIT"
 
 [project.urls]
-homepage = "https://github.com/jindaxiang/rshare"
+homepage = "https://github.com/albertandking/rshare"
 documentation = "https://rshare.readthedocs.io/"
-repository = "https://github.com/jindaxiang/rshare"
-changelog = "https://github.com/jindaxiang/rshare/blob/master/CHANGELOG.md"
+repository = "https://github.com/albertandking/rshare"
+changelog = "https://github.com/albertandking/rshare/blob/master/CHANGELOG.md"
 
 
 [tool.maturin]
