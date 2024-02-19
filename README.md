@@ -72,7 +72,7 @@ rk.fetch_title("https://www.baidu.com")
 目前主要是说明开发的软件版本：
 
 1. Python 3.12.1
-2. Rust 1.75
+2. Rust 1.76
 
 ## 注意事项
 
@@ -109,7 +109,7 @@ rk.fetch_title("https://www.baidu.com")
 
 ## Python 环境设置
 
-利用 conda 创建虚拟环境，此处注意 Python 的版本
+利用 conda 创建虚拟环境，此处注意 Python 的版本，默认安装 conda 源中最新本的 Python
 
 ```shell
 conda create -n rshare python
