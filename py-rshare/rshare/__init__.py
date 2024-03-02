@@ -4,7 +4,7 @@ from .rshare import (
     get_title,
     calculate_moving_average_rs,
     calculate_moving_average_in_rs,
-    mycode
+    mycode,
 )
 from rshare.fetch import (
     pyakversion,

@@ -63,16 +63,19 @@ print(f"纯 Python 实现: {end_py - start_py} seconds")
 
 temp_list = []
 for i in range(5):
-    data_num = 500000
+    data_num = 100000000
     data_np = np.random.rand(data_num)
+    timeperiod = 50
+
     # Rust 和 C 对比
     start_py = time.perf_counter_ns()
     result_talib = talib.SMA(data_np, timeperiod)
     end_py = time.perf_counter_ns()
     c_time = end_py - start_py
-    print(f"基于 talib 的耗时: {c_time} seconds")
+    print(f"基于 talib  的耗时: {c_time} seconds")
 
     start_py = time.perf_counter_ns()
+    data_np = np.random.rand(data_num)
     result_np_rs = rk.calculate_moving_average_rs(data=data_np, window_size=timeperiod)
     end_py = time.perf_counter_ns()
     r_time = end_py - start_py
@@ -116,4 +119,4 @@ address = "https://www.eastmoney.com/"
 test_fetch_function(rk.fetch_name, address, 20)
 
 # 对 fetch_title 函数进行测试
-test_fetch_function(rk.fetch_title, address, 20)
+test_fetch_function(rk.get_title, address, 20)
