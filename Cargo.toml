@@ -3,7 +3,6 @@ members = ["crates/*", "py-rshare"]
 resolver = "2"
 
 [workspace.package]
-name = "rshare"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.76"

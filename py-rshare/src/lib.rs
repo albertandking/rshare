@@ -168,6 +168,7 @@ fn rshare(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(get_title, m)?)?;
     m.add_function(wrap_pyfunction!(calculate_moving_average_rs, m)?)?;
     m.add_function(wrap_pyfunction!(calculate_moving_average_in_rs, m)?)?;
+    m.add("__version__", env!("CARGO_PKG_VERSION"))?;
     Ok(())
 }
 
