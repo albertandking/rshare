@@ -1,12 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 from typing import List
-from .rshare import akversion
+from .rshare import get_ak_version
 
 
 # 调用 rshare 中的 akversion 函数
-def pyakversion(name: str = "Albert", url: str = "https://akfamily.xyz") -> str:
-    return "Python 函数 " + akversion(name=name, url=url)
+def pyakversion(name: str = "Albert") -> str:
+    return "Python 函数 " + get_ak_version(name=name)
 
 
 def calculate_moving_average_py(data: List[float], window_size: int) -> List[float]:
