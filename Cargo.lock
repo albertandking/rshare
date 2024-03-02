@@ -1136,7 +1136,7 @@ dependencies = [
 
 [[package]]
 name = "rshare"
-version = "0.1.22"
+version = "0.1.0"
 dependencies = [
  "rshare-cal",
  "rshare-req",
@@ -1144,11 +1144,11 @@ dependencies = [
 
 [[package]]
 name = "rshare-cal"
-version = "0.1.22"
+version = "0.1.0"
 
 [[package]]
 name = "rshare-req"
-version = "0.1.22"
+version = "0.1.0"
 dependencies = [
  "reqwest",
  "scraper",
