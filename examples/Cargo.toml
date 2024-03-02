@@ -4,3 +4,6 @@ members = [
   "cal",
   "fetch",
   ]
+
+[dependencies]
+rshare = { path = "../crates/rshare/" }
