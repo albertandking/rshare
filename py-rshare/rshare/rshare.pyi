@@ -2,6 +2,7 @@
 from typing import List
 import numpy as np
 
+
 def akversion(name: str, url:str) -> str: ...
 
 def get_title(url: str) -> str: ...
