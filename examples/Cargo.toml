@@ -5,5 +5,5 @@ members = [
   "fetch",
   ]
 
-[dependencies]
+[workspace.dependencies]
 rshare = { path = "../crates/rshare/" }
