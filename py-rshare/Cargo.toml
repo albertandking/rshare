@@ -1,0 +1,25 @@
+[package]
+name = "py-rshare"
+version = "0.1.23"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "rshare"
+crate-type = ["cdylib"]
+
+[dependencies]
+rshare-req.workspace = true
+rshare-cal.workspace = true
+rshare.workspace = true
+
+reqwest.workspace = true
+scraper.workspace = true
+pyo3.workspace = true
+rayon.workspace = true
+numpy.workspace = true
+rand.workspace = true
+
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+# 对于 Linux aarch64 架构需要重新编译 openssl
+openssl = { version = "0.10.61", features = ["vendored"] }
