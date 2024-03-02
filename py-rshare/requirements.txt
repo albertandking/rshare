@@ -1,3 +1,6 @@
+# numba: A library that provides a just-in-time compiler for Python code, which can speed up the execution of Python code.
+numba
+
 # requests: A Python HTTP library for sending HTTP requests.
 requests
 

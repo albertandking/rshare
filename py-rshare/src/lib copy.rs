@@ -8,6 +8,7 @@ use scraper::{Html, Selector}; // 用于解析 HTML 文档
 use std::collections::HashMap; // 用于存储键值对
 use pyo3::types::IntoPyDict;
 
+
 #[pyfunction]
 pub fn akversion(name: &str, url: &str) -> PyResult<String> {
     Python::with_gil(|py| {

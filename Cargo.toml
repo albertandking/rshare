@@ -1,27 +1,26 @@
-[package]
+[workspace]
+members = ["crates/*", "py-rshare"]
+resolver = "2"
+
+[workspace.package]
 name = "rshare"
 version = "0.1.22"
 edition = "2021"
+rust-version = "1.76"
+homepage = "https://pypi.org/project/rshare/"
+documentation = "https://pypi.org/project/rshare/"
+repository = "https://github.com/albertandking/rshare"
+authors = ["Albert King"]
+license = "MIT OR Apache-2.0"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-[lib]
-name = "rshare"
-path = "src/lib.rs"
-crate-type = ["lib", "cdylib"]
+[workspace.dependencies]
+rshare-req = { path = "crates/rshare-req" }
+rshare-cal = { path = "crates/rshare-cal" }
+rshare = { path = "crates/rshare" }
 
-# 二进制配置
-[[bin]]
-name = "rshare_bin"
-path = "src/main.rs"
-
-[dependencies]
 reqwest = { version = "0.11", features = ["blocking"] }
-scraper = { version = "0.18.1" }
+scraper = { version = "0.19" }
 pyo3 = { version = "0.20", features = ["abi3-py38", "auto-initialize"] }
 rayon = { version = "1.8" }
 numpy = { version = "0.20" }
 rand = { version = "0.8" }
-
-[target.'cfg(target_arch = "aarch64")'.dependencies]
-# 对于 Linux aarch64 架构需要重新编译 openssl
-openssl = { version = "0.10.61", features = ["vendored"] }
