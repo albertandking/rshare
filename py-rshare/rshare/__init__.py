@@ -1,4 +1,4 @@
-from rshare import *
+from .rshare import *
 from rshare.fetch import *
 
 from rshare.utils._rshare_version import get_rshare_version
