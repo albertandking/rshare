@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from typing import List
 from .rshare import akversion
 
+
 # 调用 rshare 中的 akversion 函数
 def pyakversion(name: str = "Albert", url: str = "https://akfamily.xyz") -> str:
     return "Python 函数 " + akversion(name=name, url=url)
