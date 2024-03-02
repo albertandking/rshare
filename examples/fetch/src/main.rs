@@ -1,4 +1,4 @@
-extern crate rshare;
+use rshare;
 
 fn main() {
     let url = "https://www.baidu.com";
