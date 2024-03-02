@@ -9,14 +9,13 @@ extern crate rshare as rshare_rs;
 use rshare_rs::fetch_title;
 
 #[pyfunction]
-pub fn akversion(name: &str, url: &str) -> PyResult<String> {
+pub fn get_ak_version(name: &str) -> PyResult<String> {
     Python::with_gil(|py| {
         let builtins = PyModule::import(py, "akshare")?;
-        let total: String = builtins
+        let version: String = builtins
             .getattr("__version__")?
             .extract()?;
-        let title = fetch_title(url)?;
-        Ok(format!("{} 调用了我内部的 AKShare {} 版本 {}", name, total, title))
+        Ok(format!("{} 调用了我内部的 AKShare {} 版本", name, version))
     })
 }
 
@@ -163,7 +162,7 @@ pub fn calculate_moving_average_in_rs<'py>(
 // 将 Python 函数注册到模块
 #[pymodule]
 fn rshare(_py: Python, m: &PyModule) -> PyResult<()> {
-    m.add_function(wrap_pyfunction!(akversion, m)?)?;
+    m.add_function(wrap_pyfunction!(get_ak_version, m)?)?;
     m.add_function(wrap_pyfunction!(mycode, m)?)?;
     m.add_function(wrap_pyfunction!(get_title, m)?)?;
     m.add_function(wrap_pyfunction!(calculate_moving_average_rs, m)?)?;
