@@ -1,6 +1,6 @@
 from .rshare import (
     __version__,
-    akversion,
+    get_ak_version,
     get_title,
     calculate_moving_average_rs,
     calculate_moving_average_in_rs,
