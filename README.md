@@ -69,7 +69,7 @@ maturin develop --release  # 优化插入 Python 环境
 ```shell
 import rshare as rk
 
-rk.get_title("https://www.baidu.com") 
+rk.get_title("https://www.baidu.com")
 ```
 
 ## 版本说明
