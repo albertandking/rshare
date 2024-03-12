@@ -12,3 +12,6 @@ mkdocs
 
 # ruff: This is a linter or code formatter for Python
 ruff
+
+# pre-commit: A framework for managing and maintaining multi-language pre-commit hooks.
+pre-commit
