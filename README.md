@@ -60,7 +60,7 @@ print(f"基于 Rust 的耗时: {end_py - start_py} seconds")
 maturin build  # 会创建一个可以分发的轮子包，但不会安装它。
 maturin build --release  # 创建的轮子包是为发布准备的，具有更高的性能，但编译时间更长。
 
-maturin develop # 非优化插入 Python 环境
+maturin develop  # 非优化插入 Python 环境
 maturin develop --release  # 优化插入 Python 环境
 ```
 
