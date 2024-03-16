@@ -26,12 +26,13 @@ def cmma(bar_data, lookback):
 data_num = 1000
 data_np = np.random.rand(data_num)
 
-# data_np = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0] * 1000000)
 timeperiod = 5
 
 # Rust 实现的时间测试
 start_rs = time.perf_counter()
-result_rs = rk.calculate_moving_average_rs(data=data_np, window_size=timeperiod)
+result_rs = rk.calculate_moving_average_rs(
+    data=data_np, window_size=timeperiod
+)
 end_rs = time.perf_counter()
 print(f"Rust  实现: {end_rs - start_rs} seconds")
 # 基 Rust 实现: 0.00680940 seconds
@@ -39,7 +40,9 @@ print(f"Rust  实现: {end_rs - start_rs} seconds")
 
 # Rust In 实现的时间测试
 start_rs = time.perf_counter()
-result_rs = rk.calculate_moving_average_in_rs(data=data_np, window_size=timeperiod)
+result_rs = rk.calculate_moving_average_in_rs(
+    data=data_np, window_size=timeperiod
+)
 end_rs = time.perf_counter()
 print(f"Rust In 实现: {end_rs - start_rs} seconds")
 
@@ -57,7 +60,9 @@ print(f"Numba 实现: {end_py - start_py} seconds")
 
 # 纯 Python 实现的时间测试
 start_py = time.perf_counter()
-result_py = rk.calculate_moving_average_py(data=data_np, window_size=timeperiod)
+result_py = rk.calculate_moving_average_py(
+    data=data_np, window_size=timeperiod
+)
 end_py = time.perf_counter()
 print(f"纯 Python 实现: {end_py - start_py} seconds")
 
@@ -76,7 +81,9 @@ for i in range(5):
 
     start_py = time.perf_counter_ns()
     data_np = np.random.rand(data_num)
-    result_np_rs = rk.calculate_moving_average_rs(data=data_np, window_size=timeperiod)
+    result_np_rs = rk.calculate_moving_average_rs(
+        data=data_np, window_size=timeperiod
+    )
     end_py = time.perf_counter_ns()
     r_time = end_py - start_py
     print(f"基于 rshare 的耗时: {r_time} seconds")
