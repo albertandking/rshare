@@ -3,6 +3,10 @@ repos:
     rev: v4.5.0
     hooks:
       - id: check-yaml
+        exclude: |
+          (?x)^(
+            .github/workflows/CI.yml
+          )$
       - id: end-of-file-fixer
       - id: trailing-whitespace
 
