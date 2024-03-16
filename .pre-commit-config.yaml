@@ -8,6 +8,10 @@ repos:
             .github/workflows/CI.yml
           )$
       - id: end-of-file-fixer
+        exclude: |
+          (?x)^(
+            .github/workflows/CI.yml
+          )$
       - id: trailing-whitespace
 
   - repo: https://github.com/doublify/pre-commit-rust
