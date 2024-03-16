@@ -1,0 +1,7 @@
+maturin
+numba
+requests
+beautifulsoup4
+mkdocs
+ruff
+pre-commit
