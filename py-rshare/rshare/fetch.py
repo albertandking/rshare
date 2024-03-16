@@ -1,6 +1,8 @@
+from typing import List
+
 import requests
 from bs4 import BeautifulSoup
-from typing import List
+
 from .rshare import get_ak_version
 
 
@@ -9,7 +11,9 @@ def pyakversion(name: str = "Albert") -> str:
     return "Python 函数 " + get_ak_version(name=name)
 
 
-def calculate_moving_average_py(data: List[float], window_size: int) -> List[float]:
+def calculate_moving_average_py(
+    data: List[float], window_size: int
+) -> List[float]:
     if window_size > len(data):
         raise ValueError("Window size larger than the list size")
 
