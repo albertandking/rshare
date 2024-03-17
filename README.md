@@ -5,7 +5,7 @@
 这是一个 Python 和 Rust 混合编程的项目，主要目的是比较 Rust 和 Python 的性能差异。目前这个项目是 [rshare](https://github.com/albertandking/rshare)，我们
 在项目中通过 PYO3 和 Maturin 来将 Rust 代码包装到 Python 中，以使得用户可以通过 Python 代码来调用 Rust 写的函数。当然其中是有性能损失的。
 
-目前在此版本中实现对 Rust 中调用 Python 代码，以使用利用 Rust 生成二进制文件的方式对 Python 代码进行加密的效果！
+目前在此版本中实现对 Rust 中调用 Python 代码，以利用 Rust 生成二进制文件的方式对 Python 代码进行加密的效果！
 
 ## 说明
 
@@ -19,7 +19,7 @@
 
 ### 安装依赖库
 
-请先确认是否在本地安装以下依赖库
+请先确认是否已在本地安装以下依赖库
 
 ```shell
 pip install numpy rshare talib
@@ -76,7 +76,7 @@ rk.get_title("https://www.baidu.com")
 
 目前主要是说明开发的软件版本：
 
-1. Python 3.12.1
+1. Python 3.12.2
 2. Rust 1.76
 
 ## 注意事项
